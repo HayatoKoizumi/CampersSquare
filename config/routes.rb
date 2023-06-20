@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'homes#top'
 
-    resources :users, only: [:show, :edit, :update]
+    resources :users, only: [:index, :show, :edit, :update]
 
     resources :post_camps do
       resource :favorites, only: [:create, :destroy]
