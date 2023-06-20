@@ -16,25 +16,25 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get 'homes/about'
-    
+
     resources :users, only: [:show, :edit, :update] do
-      resource :relationships, only: [create, :destroy]
+      resource :relationships, only: [:create, :destroy]
     end
-    
+
     resources :post_camps do
       resource :favorites, only: [:create, :destroy]
       resources :post_camp_comments, only: [:create, :destroy]
     end
-    
+
     get "search" => "searches#search"
   end
-  
-  
-  scope module: :admin do
-    root to:"homes#top"
-    
+
+
+  namespace :admin do
+    root to: 'homes#top'
+
     resources :users, only: [:show, :edit, :update]
-    
+
     resources :post_camps do
       resource :favorites, only: [:create, :destroy]
       resources :post_camp_comments, only: [:create, :destroy]
