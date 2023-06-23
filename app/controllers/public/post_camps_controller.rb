@@ -21,7 +21,7 @@ class Public::PostCampsController < ApplicationController
   end
 
   def index
-    @post_camps = PostCamp.all
+    @post_camps = PostCamp.page(params[:page])
   end
 
   def edit
