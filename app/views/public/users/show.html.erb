@@ -7,7 +7,9 @@
   <div class='row mx-auto'>
     <div class="col-md-3 d-flex mt-3 mb-2 justify-content-between align-items-center">
       <h5 class="mb-0">登録情報</h5>
-      <%= link_to "編集", edit_user_path, class: "btn btn-success d-flex align-items-center ms-3" %>
+      <% unless @user.guest_user? %>
+        <%= link_to "編集", edit_user_path, class: "btn btn-success d-flex align-items-center ms-3" %>
+      <% end %>
     </div>
   </div>
   <div class='row'>
