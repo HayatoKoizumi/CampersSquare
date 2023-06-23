@@ -2,6 +2,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(current_user.id)
+    #@post_camps = @user.post_camps
   end
 
   def edit
@@ -30,7 +31,7 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:last_name, :first_name, :user_name, :email, :profile_image)
+    params.require(:user).permit(:last_name, :first_name, :user_name, :email, :profile_image, :introduction)
   end
 
 end
