@@ -1,0 +1,12 @@
+<div>
+  <%= image_tag @post_camp.get_image %>
+  <p>タイトル：<%= @post_camp.title %></p>
+  <p>本文：<%= @post_camp.body %></p>
+  <p>投稿ユーザー画像：<%= image_tag 'no_image.jpg' %></p>
+  <p>ユーザーネーム：<%= @post_camp.user.user_name %></p>
+  <p>投稿日：<%= @post_camp.created_at.strftime('%Y/%m/%d') %></p>
+  <% if @post_camp.user == current_user %>
+    <%= link_to "編集", edit_post_camp_path(@post_camp), method: :get %>
+    <%= link_to "削除", post_camp_path(@post_camp), method: :delete %>
+  <% end %>
+</div>
