@@ -5,6 +5,7 @@
   <p>投稿ユーザー画像：<%= image_tag 'no_image.jpg' %></p>
   <p>ユーザーネーム：<%= @post_camp.user.user_name %></p>
   <p>投稿日：<%= @post_camp.created_at.strftime('%Y/%m/%d') %></p>
+  <p><%= render "public/favorites/favorite", post_camp: @post_camp %></p>
   <% if @post_camp.user == current_user %>
     <%= link_to "編集", edit_post_camp_path(@post_camp), method: :get %>
     <%= link_to "削除", post_camp_path(@post_camp), method: :delete %>
