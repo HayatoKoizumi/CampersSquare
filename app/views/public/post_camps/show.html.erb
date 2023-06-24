@@ -13,7 +13,8 @@
             <% end %>
           </p>
           <p class="card-title">本文：<%= @post_camp.body %></p>
-          <span><i class="fas fa-user"></i> By <%= @post_camp.user.user_name %> ｜ </span>
+          <span><i class="fas fa-user"></i> By <%= @post_camp.user.user_name %></span>
+          <span><%= render "public/relationships/follow_btn", user: @user %> ｜ </span>
           <span><i class="fa fa-calendar"></i> <%= @post_camp.created_at.strftime('%Y/%m/%d') %> ｜ </span>
           <span><i class="fa fa-comment"></i> <%= link_to "#{@post_camp.comments.count}", post_camp_path(@post_camp.id), class:"text-dark" %> ｜ </span>
           <span><%= render "public/favorites/favorite", post_camp: @post_camp %></span>

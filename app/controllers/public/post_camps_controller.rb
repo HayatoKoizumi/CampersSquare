@@ -18,6 +18,7 @@ class Public::PostCampsController < ApplicationController
   def show
     @post_camp = PostCamp.find(params[:id])
     @comment = Comment.new
+    @user = User.find(params[:id])
   end
 
   def index
