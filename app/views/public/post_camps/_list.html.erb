@@ -17,7 +17,7 @@
           </p>
           <p class="card-text">説明：<%= post_camp.body %></p>
           <span><i class="fas fa-user"></i> By <%= post_camp.user.user_name %> ｜ </span>
-          <span><!--%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id), class:"text-dark" %--></span>
+          <span><%= link_to "#{post_camp.comments.count} コメント", post_camp_path(post_camp.id), class:"text-dark" %></span>
         </div>
       </div>
     </div>

@@ -29,7 +29,7 @@ Rails.application.routes.draw do
 
     resources :post_camps do
       resource :favorites, only: [:create, :destroy]
-      resources :post_camp_comments, only: [:create, :destroy]
+      resources :comments, only: [:create, :destroy]
     end
 
     get "search" => "searches#search"
