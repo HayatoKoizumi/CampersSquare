@@ -1,6 +1,6 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="col-md-8 mx-auto">
+    <div class="col-md-10 mx-auto">
       <h4 class="mt-2 mb-4 col-md-4 mx-auto headline">新規会員登録</h4>
       <div class="p-3 rounded">
         <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user' do |f| %>
@@ -38,7 +38,7 @@
                 <tr>
                   <td></td>
                   <td></td>
-                  <td class="text-center"><%= f.submit "新規登録", :class => "btn btn-lg mt-2", style: "background-color: #1A120B; color: #E5E5CB;" %></td>
+                  <td class="text-center"><%= f.submit "新規登録", :class => "btn btn-lg mt-2", style: "background-color: #1A120B; color: #FFFFFF;" %></td>
                 </tr>
               </tbody>
             </table>
