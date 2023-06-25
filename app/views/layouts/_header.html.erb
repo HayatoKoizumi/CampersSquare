@@ -11,56 +11,82 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
 
-        <% if admin_signed_in? %>
-          <li>
-            <%= link_to "会員一覧", admin_users_path, class: 'nav-link text-dark' %>
-          </li>
+          <% if admin_signed_in? %>
+            <li>
+              <%= link_to admin_users_path, class: 'nav-link text-dark' do %>
+                <i class="fas fa-users"></i> 会員一覧
+              <% end %>
+            </li>
 
-          <li>
-            <%= link_to "投稿一覧", admin_post_camps_path, class: 'nav-link text-dark' %>
-          </li>
+            <li>
+              <%= link_to admin_post_camps_path, class: 'nav-link text-dark' do %>
+                <i class="fas fa-images"></i> 投稿一覧
+              <% end %>
+            </li>
 
-          <li>
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
-          </li>
+            <li>
+              <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
+                <i class="fas fa-sign-out-alt"></i> ログアウト
+              <% end %>
+            </li>
+
+          <% elsif user_signed_in? %>
+
+            <li>
+              <%= link_to user_path(current_user), class: 'nav-link text-dark' do %>
+                <i class="fas fa-user"></i> マイページ
+              <% end %>
+            </li>
+
+            <li>
+              <%= link_to post_camps_path, class: 'nav-link text-dark' do %>
+                <i class="fas fa-images"></i> 投稿一覧
+              <% end %>
+            </li>
+
+            <li>
+              <%=  link_to new_post_camp_path , class: 'nav-link text-dark' do %>
+                <i class="fas fa-pen"></i> 新規投稿
+              <% end %>
+            </li>
+
+            <li>
+              <%= link_to  destroy_user_session_path, method: :delete, class: 'nav-link text-dark' do %>
+                <i class="fas fa-sign-out-alt"></i> ログアウト
+              <% end %>
+            </li>
 
 
-        <% elsif user_signed_in? %>
+          <% else %>
 
-          <li>
-            <%= link_to "マイページ", user_path(current_user), class: 'nav-link text-dark' %>
-          </li>
+            <li>
+              <%= link_to about_path, class: 'nav-link text-dark' do %>
+                <i class="fas fa-info-circle"></i> About
+              <% end %>
+            </li>
 
-          <li>
-            <%= link_to "投稿一覧", post_camps_path, class: 'nav-link text-dark' %>
-          </li>
+            <li>
+              <%= link_to post_camps_path, class: 'nav-link text-dark' do %>
+                <i class="fas fa-images"></i> 投稿一覧
+              <% end %>
+            </li>
 
-          <li>
-            <%=  link_to "新規投稿", new_post_camp_path , class: 'nav-link text-dark' %>
-          </li>
+            <li>
+              <%= link_to new_user_registration_path, class: 'nav-link text-dark' do %>
+                <i class="fas fa-user-plus"></i> 新規登録
+              <% end %>
+            </li>
 
-          <li>
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
-          </li>
+            <li>
+              <%= link_to new_user_session_path ,class: 'nav-link text-dark' do %>
+                <i class="fas fa-sign-in-alt"></i> ログイン
+              <% end %>
+            </li>
 
+            <li>
+              <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+            </li>
 
-        <% else %>
-
-          <li>
-            <%= link_to "About", about_path, class: 'nav-link text-dark' %>
-          </li>
-
-          <li>
-            <%= link_to "投稿一覧", post_camps_path, class: 'nav-link text-dark' %>
-          </li>
-
-          <li>
-            <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %>
-          </li>
-
-          <li>
-            <%= link_to "ログイン", new_user_session_path ,class: 'nav-link text-dark'  %>
-          </li>
           <% end %>
         </ul>
       </div>

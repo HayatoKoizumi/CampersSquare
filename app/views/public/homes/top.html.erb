@@ -1,11 +1,32 @@
-<div class="btn-wrapper col-10 mx-auto">
+<div class="container mt-5 ">
   <div class="row">
-    <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
-  </div>
-  <div class="row">
-    <%= link_to "Log in",new_user_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
-  </div>
-  <div class="row">
-    <%= link_to "Sign Up",new_user_registration_path, class: "btn btn-success btn-sm btn-block sign_up" %>
+    <div class="col-md-10 backimage-text">
+
+      <div style="position: relative; display:inline-block; margin-left: 125px">
+        <%= image_tag 'camp1.jpg', :size =>'800x600' %>
+        <div style="position: absolute; top: 40px; left:165px; max-width: 100%; max-height: 100%; padding: 30px; text-align: center; color: #ffffff;">
+          <% if user_signed_in? %>
+            <h4><strong>Welcome to 『Campers Square』 !!</strong></h4>
+            <b>
+              <br>
+              当サイトは、キャンパーのためのコミュニティサイトです。<br>
+              キャンパー同士の交流をお楽しみ下さい！
+            </b>
+          <% else %>
+            <h4><strong>Welcome to 『Campers Square』 !!</strong></h4>
+            <b>
+              <br>
+              当サイトは、キャンパーのためのコミュニティサイトです。<br>
+              登録前にぜひ<%= link_to 'こちら', about_path, class:"text-success" %>もお読みください。
+            </b>
+          <% end %>
+        </div>
+      </div>
+
+      <!--div class="mt-5">
+        <h3><strong>新着投稿</strong></h3>
+      </div-->
+
+    </div>
   </div>
 </div>
