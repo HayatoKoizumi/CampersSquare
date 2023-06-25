@@ -35,6 +35,8 @@ Rails.application.routes.draw do
     end
 
     get "search" => "searches#search"
+    
+    get "search_tag" => "post_camps#search_tag"
   end
 
 

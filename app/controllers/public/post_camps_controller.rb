@@ -7,7 +7,10 @@ class Public::PostCampsController < ApplicationController
   def create
     @post_camp = PostCamp.new(post_camp_params)
     @post_camp.user_id = current_user.id
+    # 受け取った値を,で区切って配列にする
+    tag_list = params[:post_camp][:name].split(',')
     if @post_camp.save
+      @post_camp.save_tags(tag_list)
       redirect_to post_camp_path(@post_camp), notice: "投稿が完了しました"
     else
       @post_camps = PostCamp.all
@@ -18,20 +21,26 @@ class Public::PostCampsController < ApplicationController
   def show
     @post_camp = PostCamp.find(params[:id])
     @comment = Comment.new
-    @user = User.find(params[:id])
+    @user = @post_camp.user
+    @tag_list = @post_camp.tags.pluck(:name).join(',')
+    @post_camp_tags = @post_camp.tags
   end
 
   def index
     @post_camps = PostCamp.page(params[:page])
+    @tag_list = Tag.all
   end
 
   def edit
     @post_camp = PostCamp.find(params[:id])
+    @tag_list = @post_camp.tags.pluck(:name).join(',')
   end
 
   def update
     @post_camp = PostCamp.find(params[:id])
+    tag_list=params[:post_camp][:name].split(',')
     if @post_camp.update(post_camp_params)
+      @post_camp.save_tags(tag_list)
       redirect_to post_camp_path(@post_camp), notice: "投稿内容を変更しました"
     else
       render "edit"
@@ -43,6 +52,16 @@ class Public::PostCampsController < ApplicationController
     @post_camp.destroy
     redirect_to post_camps_path
   end
+
+  def search_tag
+    #検索結果画面でもタグ一覧表示
+    @tag_list = Tag.all
+    　#検索されたタグを受け取る
+    @tag = Tag.find(params[:tag_id])
+    　#検索されたタグに紐づく投稿を表示
+    @post_camp = @tag.post_camps
+  end
+
 
   private
 
