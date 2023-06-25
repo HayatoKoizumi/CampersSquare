@@ -1,3 +1,10 @@
+<!--タグリスト-->
+<% @tag_list.each do |list|%>
+  <i class="fa-sharp fa-solid fa-tag"></i>
+  <%=link_to list.name,search_tag_path(tag_id: list.id) %>
+  <%="(#{list.post_camps.count})" %>
+<% end %>
+
 <div class="card-list-container py-5">
   <% post_camps.each do |post_camp| %>
   <div class="card w-50 mx-auto mt-4 shadow-lg">

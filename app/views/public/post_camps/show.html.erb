@@ -12,6 +12,13 @@
               <strong><i class="far fa-flag"></i><span> <%= @post_camp.title %></span></strong>
             <% end %>
           </p>
+          <p>
+            <!-- タグリスト -->
+            <% @post_camp_tags.each do |tag| %>
+            <i class="fa-sharp fa-solid fa-tag"></i>
+              <%= link_to tag.name,search_tag_path(tag_id: tag.id) %>
+            <% end %>
+          </p>
           <p class="card-title">本文：<%= @post_camp.body %></p>
           <span><i class="fas fa-user"></i> By <%= @post_camp.user.user_name %></span>
           <span><%= render "public/relationships/follow_btn", user: @user %> ｜ </span>
@@ -19,6 +26,7 @@
           <span><i class="fa fa-comment"></i> <%= link_to "#{@post_camp.comments.count}", post_camp_path(@post_camp.id), class:"text-dark" %> ｜ </span>
           <span><%= render "public/favorites/favorite", post_camp: @post_camp %></span>
           <% if @post_camp.user == current_user %>
+            <span> ｜ </span><%= link_to "編集", edit_post_camp_path(@post_camp), class:"text-dark" %>
             <span> ｜ </span><%= link_to "削除", post_camp_path(@post_camp), class:"text-dark", method: :delete %>
           <% end %>
         </div>
