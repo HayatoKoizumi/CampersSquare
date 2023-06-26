@@ -1,0 +1,37 @@
+<div class="search container">
+  <div class='row'>
+    <% search_word = @q %>
+    <% if @post_camp.present? || @user.present? %>
+      <h2 class="mt-3">検索結果 "<%= search_word %>"</h2>
+      <table class="table border table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>image</th>
+            <th>name</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @post_camp.present? %>
+            <% @post_camp.each do |f| %>
+              <tr>
+                <td><%= image_tag f.get_image(50, 50), class: "image" %></td>
+                <td><%= link_to f.title, post_camp_path(f.id) %></td>
+              </tr>
+            <% end %>
+          <% end %>
+          <% if @user.present? %>
+            <% @user.each do |f| %>
+              <tr>
+                <td><%= image_tag f.get_profile_image(50, 50), class: "image" %></td>
+                <td><%= link_to f.user_name, user_path(f.id) %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <h3 class="mt-3 text-center">検索結果がありません。</h3>
+    <% end %>
+  </div>
+</div>

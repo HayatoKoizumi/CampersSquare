@@ -27,7 +27,7 @@ class Public::PostCampsController < ApplicationController
   end
 
   def index
-    @post_camps = PostCamp.page(params[:page])
+    @post_camps = PostCamp.order(created_at: :desc).page(params[:page])
     @tag_list = Tag.all
   end
 

@@ -4,9 +4,17 @@
       <%= link_to root_path do %>
         <%= image_tag 'CampersSquare Logo.jpg', width: '50%', height: '50%' %>
       <% end %>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+
+
+      <!-- 検索機能 -->
+      <div class="serch_form">
+        <%= form_with url: search_path, local: true, method: :get do |f| %>
+          <%= f.text_field :q, class:"form-control d-inline-block" %>
+          <button class="btn btn-outline-success" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        <% end %>
+      </div>
 
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
