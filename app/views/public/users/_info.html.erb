@@ -36,6 +36,15 @@
       <% end %>
     </th>
   </tr>
+    <th class='text-center align-middle'>favorites</th>
+    <th class='text-center align-middle'>
+      <%= link_to favorites_user_path(user) do %>
+        <%= user.favorites.count %>
+      <% end %>
+    </th>
+  <tr>
+
+  </tr>
 </table>
 
 <div class='row'>

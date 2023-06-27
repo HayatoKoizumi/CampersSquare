@@ -5,14 +5,22 @@
       <th class='text-center'>ユーザー名</th>
       <th class='text-center'>フォロー数</th>
       <th class='text-center'>フォロワー数</th>
-      <th colspan="2"></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% users.each do |user| %>
       <tr>
-        <td class='text-center align-middle'><%= image_tag user.get_profile_image(70, 70) %></td>
-        <td class='text-center align-middle'><%= user.user_name %></td>
+        <td class='text-center align-middle'>
+          <%= link_to user_path(user.id) do %>
+            <%= image_tag user.get_profile_image(70, 70) %>
+          <% end %>
+        </td>
+        <td class='text-center align-middle'>
+          <%= link_to user_path(user.id) do %>
+            <%= user.user_name %>
+          <% end %>
+        </td>
         <td class='text-center align-middle'>
           <%= link_to user_followings_path(user.id) do %>
             <%= user.followings.count %> フォロー中
@@ -24,7 +32,6 @@
           <% end %>
         </td>
         <td class='text-center align-middle'><%= render "public/relationships/follow_btn", user: user %></td>
-        <td class='text-center align-middle'><%= link_to 'Show', user, class: "user_#{user.id}" %></td>
       </tr>
     <% end %>
   </tbody>

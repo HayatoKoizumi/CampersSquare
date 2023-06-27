@@ -1,0 +1,15 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <h2>ユーザー情報</h2>
+      <%= render 'info', user: @user %>
+    </div>
+    <div class='col-md-8 offset-md-1'>
+      <h2><%= @user.user_name %>のいいねした投稿一覧</h2>
+      <%= render 'public/post_camps/index',post_camps: @favorite_post_camp %>
+      <div class="post-camp__paginate d-flex justify-content-center mt-4">
+        <!--%= paginate @post_camps %-->
+      </div>
+    </div>
+  </div>
+</div>

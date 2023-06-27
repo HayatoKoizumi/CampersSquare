@@ -14,8 +14,8 @@ class Public::PostCampsController < ApplicationController
       @post_camp.save_tags(tag_list)
       redirect_to post_camp_path(@post_camp), notice: "投稿が完了しました"
     else
-      @post_camps = PostCamp.all
-      render 'index'
+      flash[:notice] = "投稿を作成できませんでした"
+      render 'new'
     end
   end
 
@@ -42,8 +42,9 @@ class Public::PostCampsController < ApplicationController
     tag_list=params[:post_camp][:name].split(',')
     if @post_camp.update(post_camp_params)
       @post_camp.save_tags(tag_list)
-      redirect_to post_camp_path(@post_camp), notice: "投稿内容を変更しました"
+      redirect_to post_camp_path(@post_camp), notice: "投稿内容を更新しました"
     else
+      flash[:notice] = "投稿内容更新できませんでした"
       render "edit"
     end
   end
@@ -51,6 +52,7 @@ class Public::PostCampsController < ApplicationController
   def destroy
     @post_camp = PostCamp.find(params[:id])
     @post_camp.destroy
+    flash[:notice] = "削除が完了しました"
     redirect_to post_camps_path
   end
 

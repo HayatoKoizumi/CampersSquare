@@ -1,6 +1,8 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_guest_user, only: [:edit]
+  before_action :set_user, only: [:favorites]
+
 
   def index
     @users = User.all.order(updated_at: :desc).page(params[:page]).per(5)
@@ -19,7 +21,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(current_user.id)
     @user.update(user_params)
     redirect_to user_path
-    flash[:notice] = "変更が完了しました"
+    flash[:notice] = "ユーザー情報を更新しました"
   end
 
   def check
@@ -33,6 +35,11 @@ class Public::UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def favorites
+    favorites = Favorite.where(user_id: @user.id).pluck(:post_camp_id)
+    @favorite_post_camp = PostCamp.find(favorites)
+    @user = User.find(params[:id])
+  end
 
   private
 
@@ -45,6 +52,10 @@ class Public::UsersController < ApplicationController
     if @user.guest_user?
       redirect_to user_path(current_user) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 
 end
