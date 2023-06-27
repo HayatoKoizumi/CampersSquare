@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     get '/users/check' => 'users#check'
     patch '/users/withdraw' => 'users#withdraw'
 
-    resources :users, only: [:show, :edit, :update] do
+    resources :users, only: [:index, :show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     end
 
     get "search" => "searches#search"
-    
+
     get "search_tag" => "post_camps#search_tag"
   end
 

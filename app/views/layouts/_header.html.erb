@@ -5,24 +5,14 @@
         <%= image_tag 'CampersSquare Logo.jpg', width: '50%', height: '50%' %>
       <% end %>
 
-
-      <!-- 検索機能 -->
-      <div class="serch_form">
-        <%= form_with url: search_path, local: true, method: :get do |f| %>
-          <%= f.text_field :q, class:"form-control d-inline-block" %>
-          <button class="btn btn-outline-success" type="submit">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </button>
-        <% end %>
-      </div>
-
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
 
           <% if admin_signed_in? %>
+            <li class="mr-5 pr-5">ログイン中：管理者</li>
             <li>
               <%= link_to admin_users_path, class: 'nav-link text-dark' do %>
-                <i class="fas fa-users"></i> 会員一覧
+                <i class="fas fa-users"></i> ユーザー一覧
               <% end %>
             </li>
 
@@ -40,9 +30,16 @@
 
           <% elsif user_signed_in? %>
 
+            <li class="mr-5 pr-5">ログイン中：<%= current_user.user_name %></li>
             <li>
               <%= link_to user_path(current_user), class: 'nav-link text-dark' do %>
-                <i class="fas fa-user"></i> マイページ
+                <i class="fas fa-user-circle"></i> マイページ
+              <% end %>
+            </li>
+
+            <li>
+              <%= link_to users_path, class: 'nav-link text-dark' do %>
+                <i class="fas fa-users"></i> ユーザー一覧
               <% end %>
             </li>
 
@@ -70,12 +67,6 @@
             <li>
               <%= link_to about_path, class: 'nav-link text-dark' do %>
                 <i class="fas fa-info-circle"></i> About
-              <% end %>
-            </li>
-
-            <li>
-              <%= link_to post_camps_path, class: 'nav-link text-dark' do %>
-                <i class="fas fa-images"></i> 投稿一覧
               <% end %>
             </li>
 

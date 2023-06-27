@@ -33,7 +33,7 @@ class User < ApplicationRecord
       user.password = SecureRandom.urlsafe_base64
       user.last_name = "ゲスト"
       user.first_name = "ユーザー"
-      user.user_name = "ゲストユーザー"
+      user.user_name = "ゲスト"
     end
   end
 

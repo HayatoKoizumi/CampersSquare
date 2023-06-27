@@ -1,8 +1,8 @@
 <div class="search container">
   <div class='row'>
     <% search_word = @q %>
+    <h2 class="mt-3">検索結果 "<%= search_word %>"</h2>
     <% if @post_camp.present? || @user.present? %>
-      <h2 class="mt-3">検索結果 "<%= search_word %>"</h2>
       <table class="table border table-hover table-inverse">
         <thead>
           <tr>
@@ -31,7 +31,7 @@
         </tbody>
       </table>
     <% else %>
-      <h3 class="mt-3 text-center">検索結果がありません。</h3>
+      <h3 class="text-center mt-5 pt-5">検索結果がありません。</h3>
     <% end %>
   </div>
 </div>

@@ -1,4 +1,5 @@
 class Public::PostCampsController < ApplicationController
+  #before_action :ensure_user, only: [:edit, :update, :destroy]
 
   def new
     @post_camp = PostCamp.new
@@ -27,7 +28,7 @@ class Public::PostCampsController < ApplicationController
   end
 
   def index
-    @post_camps = PostCamp.order(created_at: :desc).page(params[:page])
+    @post_camps = PostCamp.all.order(updated_at: :desc).page(params[:page]).per(5)
     @tag_list = Tag.all
   end
 
@@ -56,10 +57,10 @@ class Public::PostCampsController < ApplicationController
   def search_tag
     #検索結果画面でもタグ一覧表示
     @tag_list = Tag.all
-    　#検索されたタグを受け取る
+    #検索されたタグを受け取る
     @tag = Tag.find(params[:tag_id])
-    　#検索されたタグに紐づく投稿を表示
-    @post_camp = @tag.post_camps
+    #検索されたタグに紐づく投稿を表示
+    @post_camps = @tag.post_camps.page(params[:page]).per(5)
   end
 
 

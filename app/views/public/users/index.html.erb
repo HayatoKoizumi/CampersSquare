@@ -2,13 +2,13 @@
   <div class='row'>
     <div class='col-md-3'>
       <h2>ユーザー情報</h2>
-      <%= render 'info', user: @user %>
+      <%= render 'info', user: current_user %>
     </div>
     <div class='col-md-8 offset-md-1'>
-      <h2><%= @user.user_name %>の投稿一覧</h2>
-      <%= render 'public/post_camps/index',post_camps: @post_camps %>
+      <h2>ユーザー一覧</h2>
+      <%= render 'index',users: @users %>
       <div class="post-camp__paginate d-flex justify-content-center mt-4">
-        <%= paginate @post_camps %>
+        <%= paginate @users %>
       </div>
     </div>
   </div>
