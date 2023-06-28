@@ -1,13 +1,20 @@
+<!--タグリスト-->
+<% @tag_list.each do |list|%>
+  <i class="fa-sharp fa-solid fa-tag"></i>
+  <%=link_to list.name,search_tag_path(tag_id: list.id) %>
+  <%="(#{list.post_camps.count})" %>
+<% end %>
+
 <div class="card-list-container py-5">
   <% post_camps.each do |post_camp| %>
   <div class="card w-50 mx-auto mt-4 shadow-lg">
     <%= link_to post_camp_path(post_camp.id) do %>
-      <%= image_tag post_camp.get_image, class:"card-img-top"; %>
+      <%= image_tag post_camp.get_image(50, 50), class:"card-img-top"; %>
     <% end %>
     <div class="card-body">
       <div class="row">
         <div class="col-2">
-          <%= image_tag 'no_image.jpg', class:"mt-3 rounded-circle"; %>
+          <%= image_tag post_camp.user.get_profile_image(100,100), class:"mt-3 rounded-circle"; %>
         </div>
         <div class="col-10">
           <p class="card-title">

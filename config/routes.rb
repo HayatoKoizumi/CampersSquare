@@ -23,10 +23,14 @@ Rails.application.routes.draw do
     get '/users/check' => 'users#check'
     patch '/users/withdraw' => 'users#withdraw'
 
-    resources :users, only: [:show, :edit, :update] do
+    resources :users, only: [:index, :show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
+
+      member do
+        get :favorites
+      end
     end
 
     resources :post_camps do
@@ -35,17 +39,22 @@ Rails.application.routes.draw do
     end
 
     get "search" => "searches#search"
+
+    get "search_tag" => "post_camps#search_tag"
   end
 
 
   namespace :admin do
-    root to: 'homes#top'
+    root to: 'users#index'
 
-    resources :users, only: [:index, :show, :edit, :update]
+    get 'admin/users/:id/check' => 'users#check', as: 'check'
+
+    get "search" => "searches#search"
+
+    resources :users, only: [:index, :show, :edit, :update, :destroy]
 
     resources :post_camps do
-      resource :favorites, only: [:create, :destroy]
-      resources :post_camp_comments, only: [:create, :destroy]
+      resources :comments, only: [:destroy]
     end
   end
 

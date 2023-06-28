@@ -1,6 +1,22 @@
-<h2>Follow Users</h2>
-<% if @users.exists? %>
-  <%= render 'public/users/index', users: @users %>
-<% else %>
-  <p>ユーザーはいません</p>
-<% end %>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+
+    <div class='col-md-3'>
+      <h2>ユーザー情報</h2>
+      <%= render 'public/users/info', user: @user %>
+    </div>
+
+    <div class='col-md-8 offset-md-1'>
+      <h2><%= @user.user_name %> の フォロー一覧</h2>
+        <% if @users.exists? %>
+          <%= render 'public/users/index', users: @users %>
+        <% else %>
+          <p>ユーザーはいません</p>
+        <% end %>
+      <div class="post-camp__paginate d-flex justify-content-center mt-4">
+        <%= paginate @users %>
+      </div>
+    </div>
+
+  </div>
+</div>

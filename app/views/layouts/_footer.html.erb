@@ -1,0 +1,19 @@
+<footer class="border-top mt-3">
+  <div class='container mt-3 mb-3'>
+  	<div class='row'>
+    	<div class='mx-auto'>
+    		<!-- 検索機能 -->
+        <div class="serch_form">
+          <%= form_with url: search_path, local: true, method: :get do |f| %>
+            <%= f.text_field :q, class:"form-control d-inline-block" %>
+            <button class="btn btn-outline-secondary" type="submit">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          <% end %>
+      </div>
+    	</div>
+    </div>
+  </div>
+</footer>
+
+

@@ -2,13 +2,17 @@
   <div class='row'>
     <div class="col-md-8 mx-auto text-center p-3 rounded" style="background-color: #d8e5cb;">
     <h1 class="mb-3">本当に退会しますか？</h1>
-    <h5>退会すると、会員登録情報や<br>
+    <h5>退会すると、ユーザー登録情報や<br>
     これまでの投稿が閲覧できなくなります。<br>
     退会する場合は、｢退会する｣をクリックしてください。</h5>
 
     <div class="d-flex justify-content-center mt-3">
+      <div class="form-group mt-3">
         <%= link_to "退会しない", user_path(current_user.id), :class => "btn btn-lg ms-3", style: "background-color: #1a120b; color: #d8e5cb;" %>
-        <%= link_to "退会する", users_withdraw_path, method: :patch, :class => "btn btn-lg btn-danger ms-3", style: "color: #d8e5cb;", data: { confirm: "本当に退会しますか？" }  %>
+      </div>
+      <div class="align-items-center mt-3 ml-5">
+        <%= link_to "退会する", users_withdraw_path, method: :patch, :class => "btn btn-lg btn-danger ms-3", style: "color: #d8e5cb;", data: { confirm: "本当に退会しますか？" } %>
+      </div>
     </div>
   </div>
  </div>

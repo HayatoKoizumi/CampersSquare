@@ -1,14 +1,15 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="col-md-8 mx-auto">
-      <h4 class="mt-2 mb-4 col-md-4 mx-auto headline">新規会員登録</h4>
-      <div class="p-3 rounded">
+    <div class="col-md-10 mx-auto">
+
+      <h4 class="mt-2 mb-4 col-md-4 mx-auto headline text-center">新規会員登録</h4>
+
+      <div class="p-3 rounded" style="background-color: #d8e5cb;">
         <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user' do |f| %>
           <%= render "public/shared/error_messages", resource: resource %>
           <div class="form-group ml-2">
             <table class="table mb-0 table-borderless">
               <tbody>
-                <tr>
                   <td>名前</td>
                   <td>（姓）</td>
                   <td><%= f.text_field :last_name,placeholder: "鈴木",class: 'form-control' %>
@@ -38,17 +39,19 @@
                 <tr>
                   <td></td>
                   <td></td>
-                  <td class="text-center"><%= f.submit "新規登録", :class => "btn btn-lg mt-2", style: "background-color: #1A120B; color: #E5E5CB;" %></td>
+                  <td class="text-center"><%= f.submit "新規登録", :class => "btn btn-lg mt-2", style: "background-color: #1a120b; color: #d8e5cb;" %></td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <div class=" text-center mt-4">
-            <h4>既に登録済みの方</h4>
-            <h6><%= link_to "こちら", new_session_path(resource_name), class:"login-link" %>からログインしてください。</h6>
-          </div>
         <% end %>
       </div>
+
+      <div class=" text-center mt-4">
+        <h4>既に登録済みの方</h4>
+        <h6><%= link_to "こちら", new_session_path(resource_name), class:"login-link" %>からログインしてください。</h6>
+      </div>
+
     </div>
   </div>
 </div>
