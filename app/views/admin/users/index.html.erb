@@ -1,0 +1,11 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-12'>
+      <h2>ユーザー管理画面</h2>
+      <%= render 'admin/users/index',users: @users %>
+      <div class="post-camp__paginate d-flex justify-content-center mt-4">
+        <%= paginate @users %>
+      </div>
+    </div>
+  </div>
+</div>
