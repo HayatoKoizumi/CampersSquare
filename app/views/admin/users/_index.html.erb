@@ -1,0 +1,44 @@
+<table class='table'>
+  <thead>
+    <tr>
+      <th></th>
+      <th class='text-center'>名前</th>
+      <th class='text-center'>メールアドレス</th>
+      <th class='text-center'>ユーザー名</th>
+      <th class='text-center'>ユーザーステータス</th>
+      <th class='text-center'>ユーザーID</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.each do |user| %>
+      <tr>
+        <td class='text-center align-middle'>
+          <%= link_to admin_user_path(user) do %>
+            <%= image_tag user.get_profile_image(50, 50) %>
+          <% end %>
+        </td>
+        <td class='text-center align-middle'><%= user.last_name %> <%= user.first_name %></td>
+        <td class='text-center align-middle'><%= user.email %></td>
+        <td class='text-center align-middle'>
+          <%= link_to admin_user_path(user) do %>
+            <%= user.user_name %>
+          <% end %>
+        </td>
+        <td class='text-center align-middle'>
+          <% if user.is_deleted == false %>
+            有効会員
+          <% else %>
+            退会済
+          <% end %>
+        </td>
+        <td class='text-center align-middle'><%= user.id %></td>
+        <td>
+          <%= link_to edit_admin_user_path(user), class: "btn btn-outline-secondary btn-block edit_user_#{user.id}" do %>
+            <i class="fas fa-user-cog"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

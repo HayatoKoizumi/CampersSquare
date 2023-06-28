@@ -9,7 +9,7 @@
         <ul class="navbar-nav ml-auto">
 
           <% if admin_signed_in? %>
-            <li class="mr-5 pr-5">ログイン中：管理者</li>
+            <li class="mr-5 pr-5">管理者：ログイン中</li>
             <li>
               <%= link_to admin_users_path, class: 'nav-link text-dark' do %>
                 <i class="fas fa-users"></i> ユーザー一覧
@@ -30,7 +30,7 @@
 
           <% elsif user_signed_in? %>
 
-            <li class="mr-5 pr-5">ログイン中：<%= current_user.user_name %></li>
+            <li class="mr-5 pr-5"><%= current_user.user_name %>：ログイン中</li>
             <li>
               <%= link_to user_path(current_user), class: 'nav-link text-dark' do %>
                 <i class="fas fa-user-circle"></i> マイページ

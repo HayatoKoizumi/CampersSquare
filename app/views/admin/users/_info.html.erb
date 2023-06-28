@@ -1,0 +1,27 @@
+<table class='table'>
+  <tr>
+    <div class='text-center'><%= image_tag user.get_profile_image(150, 150) %></div>
+  </tr>
+  <tr>
+	  <th class='text-center align-middle'>名前</th>
+	  <th class='text-center align-middle'><%= user.last_name %> <%= user.first_name %></th>
+  </tr>
+  <tr>
+	  <th class='text-center align-middle'>メール<br>アドレス</th>
+	  <th><%= user.email %></th>
+  </tr>
+  <tr>
+	  <th class='text-center align-middle'>ユーザー<br>ネーム</th>
+	  <th class='text-center align-middle'><%= user.user_name %></th>
+  </tr>
+  <tr>
+	  <th class='text-center align-middle'>紹介文</th>
+	  <th><%= user.introduction %></th>
+  </tr>
+</table>
+
+<div class='row'>
+  <%= link_to edit_admin_user_path(user), class: "btn btn-outline-secondary btn-block edit_user_#{user.id}" do %>
+    <i class="fas fa-user-cog"></i>
+  <% end %>
+</div>

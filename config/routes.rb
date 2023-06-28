@@ -27,7 +27,7 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
-      
+
       member do
         get :favorites
       end
@@ -45,13 +45,12 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
-    root to: 'homes#top'
+    root to: 'users#index'
 
     resources :users, only: [:index, :show, :edit, :update]
 
     resources :post_camps do
-      resource :favorites, only: [:create, :destroy]
-      resources :post_camp_comments, only: [:create, :destroy]
+      resources :comments, only: [:destroy]
     end
   end
 
