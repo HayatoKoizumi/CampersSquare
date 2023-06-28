@@ -10,6 +10,10 @@ class PostCamp < ApplicationRecord
   has_many :post_camp_tags, dependent: :destroy
   has_many :tags, through: :post_camp_tags
 
+  #validates  :image, presence:  true
+  validates  :title, presence:  true, length: { maximum: 20 }
+  validates  :body, presence:  true, length: { maximum: 300 }
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')

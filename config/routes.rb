@@ -47,7 +47,11 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'users#index'
 
-    resources :users, only: [:index, :show, :edit, :update]
+    get 'admin/users/:id/check' => 'users#check', as: 'check'
+
+    get "search" => "searches#search"
+
+    resources :users, only: [:index, :show, :edit, :update, :destroy]
 
     resources :post_camps do
       resources :comments, only: [:destroy]

@@ -58,7 +58,7 @@
         <%= form_with model:[@post_camp, @comment],local: false do |f| %>
           <div class="form-group">
             <label>コメントする</label>
-            <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+            <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに（100文字以内）" %>
           </div>
           <%= f.submit "送信する", class:"btn mt-2 float-right", style: "background-color: #1a120b; color: #ffffff;" %>
         <% end %>

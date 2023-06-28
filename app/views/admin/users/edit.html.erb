@@ -1,11 +1,10 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
-    <div class="col-md-11">
+    <div class="col-md-12">
       <h4 class="col-md-4 mx-auto headline mb-4 text-center">会員情報編集</h4>
 
       <div class="p-3 rounded" style="background-color: #d8e5cb;">
-        <%= form_with model: @user, url:user_path do |f| %>
-        <!--%= render 'layouts/error_messages', model: f.object %-->
+        <%= form_with model: @user, url: admin_user_path(@user), method: :patch do |f| %>
 
         <div class="form-group mt-3 row justify-content-center">
           <label class="col-md-2 col-form-label">プロフィール画像</label>
@@ -25,7 +24,7 @@
         </div>
 
         <div class="form-group mt-3 row justify-content-center">
-          <label class="col-md-2 col-form-label">メールアドレス（非公開）</label>
+          <label class="col-md-2 col-form-label">メールアドレス<br>（非公開）</label>
           <div class="col-md-6 align-middle">
             <%= f.text_field :email, class:"form-control" %>
           </div>
@@ -48,12 +47,14 @@
         <div class="form-group mt-3 row justify-content-center">
           <label class="col-md-2 col-form-label">ユーザーステータス</label>
           <div class="col-md-6">
-            <%= form_with model: @user, url:admin_user_path, method: :patch do |f| %>
-              <%= f.radio_button :is_deleted, false %>
-              <%= f.label :is_deleted, '有効', class: "mr-2" %>
-              <%= f.radio_button :is_deleted, true %>
-              <%= f.label :is_deleted, '退会' %>
-            <% end %>
+            <div class="ml-4">
+              <%= f.radio_button :is_deleted, :false,class: 'form-check-input' %>
+              <%= f.label :is_deleted, "有効",class: 'form-check-label' %>
+            </div>
+            <div class="ml-4">
+              <%= f.radio_button :is_deleted, :true,class: 'form-check-input' %>
+              <%= f.label :is_deleted, "退会",class: 'form-check-label' %>
+            </div>
           </div>
         </div>
 
@@ -63,7 +64,7 @@
           </div>
           <% end %>
           <div class="align-items-center mt-3">
-            <%= link_to "退会する", users_check_path, class: 'btn btn-lg btn-danger', style: "color: #d8e5cb;" %>
+            <%= link_to "ユーザー情報を削除する", admin_check_path(@user), class: 'btn btn-lg btn-danger', style: "color: #d8e5cb;" %>
           </div>
         </div>
       </div>

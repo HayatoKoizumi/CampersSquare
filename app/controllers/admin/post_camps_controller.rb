@@ -14,7 +14,7 @@ class Admin::PostCampsController < ApplicationController
   def destroy
     @post_camp = PostCamp.find(params[:id])
     @post_camp.destroy
-    flash[:notice] = "削除が完了しました"
+    flash[:notice] = "投稿を削除しました"
     redirect_to admin_post_camps_path
   end
 

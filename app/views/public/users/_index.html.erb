@@ -3,6 +3,7 @@
     <tr>
       <th></th>
       <th class='text-center'>ユーザー名</th>
+      <th class='text-center'>投稿件数</th>
       <th class='text-center'>フォロー数</th>
       <th class='text-center'>フォロワー数</th>
       <th></th>
@@ -19,6 +20,11 @@
         <td class='text-center align-middle'>
           <%= link_to user_path(user.id) do %>
             <%= user.user_name %>
+          <% end %>
+        </td>
+        <td class='text-center align-middle'>
+          <%= link_to user_path(user.id) do %>
+            <%= user.post_camps.count %> 件
           <% end %>
         </td>
         <td class='text-center align-middle'>

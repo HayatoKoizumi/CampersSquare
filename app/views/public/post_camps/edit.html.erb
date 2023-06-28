@@ -7,6 +7,15 @@
       </div>
     </div>
 
+    <% if @post_camp.errors.any? %>
+      <%= @post_camp.errors.count %>件のエラーが発生しました
+      <ul>
+        <% @post_camp.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
     <div class="p-3 rounded" style="background-color: #d8e5cb;">
       <div class="form d-flex justify-content-center" >
         <%= form_with model: @post_camp, method: :patch, local: true do |f| %>
@@ -19,7 +28,7 @@
               </tr>
               <tr>
                 <td>タイトル</td>
-                <td><%= f.text_field :title, autofocus: true, placeholder:"タイトル",class:"form-control" %></td>
+                <td><%= f.text_field :title, autofocus: true, placeholder:"タイトル（20文字以内）",class:"form-control" %></td>
               </tr>
               <tr>
                 <td>タグ</td>
@@ -27,7 +36,7 @@
               </tr>
               <tr>
                 <td>本文</td>
-                <td> <%= f.text_area :body, placeholder:"ここに本文を記述します",rows:"5",class:"form-control"%></td>
+                <td> <%= f.text_area :body, placeholder:"ここに本文を記述します（300文字以内）",rows:"5",class:"form-control"%></td>
               </tr>
             </tbody>
           </table>

@@ -6,6 +6,7 @@ class Public::UsersController < ApplicationController
 
   def index
     @users = User.all.order(updated_at: :desc).page(params[:page]).per(5)
+    @post_camps = PostCamp.all
   end
 
   def show
@@ -19,9 +20,13 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = User.find(current_user.id)
-    @user.update(user_params)
-    redirect_to user_path
-    flash[:notice] = "ユーザー情報を更新しました"
+    if @user.update(user_params)
+      redirect_to user_path, notice: "ユーザー情報を更新しました"
+    else
+      flash[:notice] = "ユーザー情報を更新できませんでした"
+      render "edit"
+    end
+
   end
 
   def check

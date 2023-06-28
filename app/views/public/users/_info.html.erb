@@ -4,24 +4,24 @@
   </tr>
   <% if user == current_user %>
     <tr>
-  	  <th class='text-center align-middle'>名前</th>
+  	  <th class='text-center align-middle'>Name</th>
   	  <th class='text-center align-middle'><%= user.last_name %> <%= user.first_name %></th>
     </tr>
     <tr>
-  	  <th class='text-center align-middle'>メール<br>アドレス</th>
+  	  <th class='text-center align-middle'>Email Address</th>
   	  <th><%= user.email %></th>
     </tr>
   <% end %>
   <tr>
-	  <th class='text-center align-middle'>ユーザー<br>ネーム</th>
+	  <th class='text-center align-middle'>User Name</th>
 	  <th class='text-center align-middle'><%= user.user_name %></th>
   </tr>
   <tr>
-	  <th class='text-center align-middle'>紹介文</th>
+	  <th class='text-center align-middle'>Introduction</th>
 	  <th><%= user.introduction %></th>
   </tr>
   <tr>
-    <th class='text-center align-middle'>follows</th>
+    <th class='text-center align-middle'>Follows</th>
     <th class='text-center align-middle'>
       <%= link_to user_followings_path(user.id) do %>
         <%= user.followings.count %>
@@ -29,14 +29,14 @@
     </th>
   </tr>
   <tr>
-    <th class='text-center align-middle'>followers</th>
+    <th class='text-center align-middle'>Followers</th>
     <th class='text-center align-middle'>
       <%= link_to user_followers_path(user.id) do %>
         <%= user.followers.count %>
       <% end %>
     </th>
   </tr>
-    <th class='text-center align-middle'>favorites</th>
+    <th class='text-center align-middle'>Favorites</th>
     <th class='text-center align-middle'>
       <%= link_to favorites_user_path(user) do %>
         <%= user.favorites.count %>

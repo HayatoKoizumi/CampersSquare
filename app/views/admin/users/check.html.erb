@@ -1,0 +1,18 @@
+<div class= 'container mt-5'>
+  <div class='row'>
+    <div class="col-md-8 mx-auto text-center p-3 rounded" style="background-color: #d8e5cb;">
+    <h1 class="mb-3">本当にこのユーザーを削除しますか？</h1>
+    <h5>削除すると、ユーザーに関する情報がなくなります。<br>
+    削除する場合は、｢削除する｣をクリックしてください。</h5>
+
+    <div class="d-flex justify-content-center mt-3">
+      <div class="form-group mt-3">
+        <%= link_to "削除しない", :back, :class => "btn btn-lg ms-3", style: "background-color: #1a120b; color: #d8e5cb;" %>
+      </div>
+      <div class="align-items-center mt-3 ml-5">
+        <%= link_to "削除する", admin_user_path, method: :delete, "data-confirm" => "本当に削除しますか？", :class => "btn btn-lg btn-danger ms-3", style: "color: #d8e5cb;" %>
+      </div>
+    </div>
+  </div>
+ </div>
+</div>

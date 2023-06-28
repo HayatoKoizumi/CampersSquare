@@ -1,5 +1,5 @@
 class Public::PostCampsController < ApplicationController
-  #before_action :ensure_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!
 
   def new
     @post_camp = PostCamp.new
@@ -44,7 +44,7 @@ class Public::PostCampsController < ApplicationController
       @post_camp.save_tags(tag_list)
       redirect_to post_camp_path(@post_camp), notice: "投稿内容を更新しました"
     else
-      flash[:notice] = "投稿内容更新できませんでした"
+      flash[:notice] = "投稿内容を更新できませんでした"
       render "edit"
     end
   end
@@ -52,7 +52,7 @@ class Public::PostCampsController < ApplicationController
   def destroy
     @post_camp = PostCamp.find(params[:id])
     @post_camp.destroy
-    flash[:notice] = "削除が完了しました"
+    flash[:notice] = "投稿を削除しました"
     redirect_to post_camps_path
   end
 

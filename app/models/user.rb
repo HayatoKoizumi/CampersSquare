@@ -9,6 +9,10 @@ class User < ApplicationRecord
   has_many :post_camps, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
+  
+  validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :user_name, presence: true, length: { maximum: 15 }, uniqueness: true
 
   # 自分がフォローする（与フォロー）側の関係性
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
@@ -27,7 +31,8 @@ class User < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
-
+  
+  #ゲストログイン設定
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
@@ -39,6 +44,20 @@ class User < ApplicationRecord
 
   def guest_user?
     email == 'guest@example.com'
+  end
+  
+  #退会済みユーザーがログイン制御設定
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+  
+  # is_deleted日本語化
+  def deleted_status
+    if is_deleted == false
+      "会員"
+    else
+      "退会済み"
+    end
   end
 
   #　フォローしたときの処理

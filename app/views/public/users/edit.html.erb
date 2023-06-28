@@ -3,6 +3,15 @@
     <div class="col-md-11">
       <h4 class="col-md-4 mx-auto headline mb-4 text-center">会員情報編集</h4>
 
+      <% if @user.errors.any? %>
+        <%= @user.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
       <div class="p-3 rounded" style="background-color: #d8e5cb;">
         <%= form_with model: @user, url:user_path do |f| %>
         <!--%= render 'layouts/error_messages', model: f.object %-->
