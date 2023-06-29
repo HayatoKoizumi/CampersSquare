@@ -3,6 +3,8 @@
 - [サイト概要](#サイト概要)
 - [設計書](#設計書)
 - [開発環境](#開発環境)
+- [インストール方法](#インストール方法)
+- [管理者ページのログイン](#管理者ページのログイン)
 
 ---
 
@@ -41,6 +43,36 @@
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
+
+## インストール方法
+~~~
+$ git clone git@github.com:HayatoKoizumi/CampersSquare.git
+~~~
+
+~~~
+$ cd CampersSquare
+~~~
+
+~~~
+$ bundle install --without production
+~~~
+
+~~~
+$ yarn install
+~~~
+
+~~~
+$ rails db:migrate
+~~~
+
+~~~
+$ rails db:seed
+~~~
+
+## 管理者ページのログイン
+/admin/sign_inをURLに入力し、下記の情報を入力することで管理者としてログインできます。
+- メールアドレス：admin@admin
+- パスワード：admin0
 
 <!--## 使用素材-->
 <!-- - 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。-->
