@@ -1,6 +1,14 @@
 <div class="post-detail py-3 bg-light">
   <div class="card w-50 mx-auto mt-4 shadow-lg">
     <%= image_tag @post_camp.get_image(2000,2000), class:"card-img-top"; %>
+
+    <div class="tag-box text-right">
+      AI Vision Tag ：
+      <% @post_camp.vision_tags.each do |vision_tag| %>
+        <span class="label "><%= vision_tag.name %></span>
+      <% end %>
+    </div>
+
     <div class="card-body">
       <div class="row">
         <div class="col-2">
