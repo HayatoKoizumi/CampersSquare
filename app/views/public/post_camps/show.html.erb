@@ -2,10 +2,10 @@
   <div class="card w-50 mx-auto mt-4 shadow-lg">
     <%= image_tag @post_camp.get_image(2000,2000), class:"card-img-top"; %>
 
-    <div class="tag-box text-right">
+    <div class="tag-box text-right mr-3">
       AI Vision Tag ：
       <% @post_camp.vision_tags.each do |vision_tag| %>
-        <span class="label "><%= vision_tag.name %></span>
+        <span class="label pr-2 pl-2 bg-info text-light"><%= vision_tag.name %></span>
       <% end %>
     </div>
 
