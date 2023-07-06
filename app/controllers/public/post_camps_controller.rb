@@ -7,6 +7,7 @@ class Public::PostCampsController < ApplicationController
 
   def create
     @post_camp = PostCamp.new(post_camp_params)
+    # Google Vision API 投稿画像の解析機能
     vision_tags = Vision.get_image_data(post_camp_params[:image])
     @post_camp.user_id = current_user.id
     # 受け取った値を,で区切って配列にする
