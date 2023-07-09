@@ -2,6 +2,7 @@
   <div class="card w-50 mx-auto mt-4 shadow-lg">
     <%= image_tag @post_camp.get_image(2000,2000), class:"card-img-top"; %>
 
+    <!-- Google Vision API 投稿画像の解析機能 タグ表示 -->
     <div class="tag-box text-right mr-3">
       AI Vision Tag ：
       <% @post_camp.vision_tags.each do |vision_tag| %>
