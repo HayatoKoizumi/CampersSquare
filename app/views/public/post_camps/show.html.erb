@@ -21,13 +21,15 @@
           <p class="card-title">
               <strong><i class="far fa-flag"></i><span> <%= @post_camp.title %></span></strong>
           </p>
+          
+          <!-- タグリスト -->
           <p>
-            <!-- タグリスト -->
             <% @post_camp_tags.each do |tag| %>
             <i class="fa-sharp fa-solid fa-tag"></i>
               <%= link_to tag.name,search_tag_path(tag_id: tag.id) %>
             <% end %>
           </p>
+          
           <p class="card-title">本文：<%= @post_camp.body %></p>
           <span><i class="fas fa-user"></i>By
             <%= link_to user_path(@post_camp.user), class:"text-dark" do %>
