@@ -10,7 +10,7 @@ class Public::PostCampsController < ApplicationController
     # Google Vision API 投稿画像の解析機能
     vision_tags = Vision.get_image_data(post_camp_params[:image])
     @post_camp.user_id = current_user.id
-    # 受け取った値を,で区切って配列にする
+    # タグリスト　受け取った値を,で区切って配列にする
     tag_list = params[:post_camp][:name].split(',')
     if @post_camp.save
       # Google Vision API 投稿画像の解析機能
