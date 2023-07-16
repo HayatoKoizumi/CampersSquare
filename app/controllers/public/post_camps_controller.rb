@@ -52,9 +52,9 @@ class Public::PostCampsController < ApplicationController
     tag_list=params[:post_camp][:name].split(',')
     if @post_camp.update(post_camp_params)
       # Google Vision API 投稿画像の解析機能
+      @post_camp.vision_tags.destroy_all
       vision_tags.each do |vision_tag|
-        @post_camp.vision_tags.destroy
-        @post_camp.vision_tags.update(name: vision_tag)
+        @post_camp.vision_tags.create(name: vision_tag)
       end
       # タグ機能
       @post_camp.save_tags(tag_list)
