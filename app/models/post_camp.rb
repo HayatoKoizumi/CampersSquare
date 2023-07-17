@@ -13,8 +13,8 @@ class PostCamp < ApplicationRecord
   has_many :vision_tags, dependent: :destroy
 
   validates :image, presence: true
-  validates  :title, presence:  true, length: { maximum: 20 }
-  validates  :body, presence:  true, length: { maximum: 300 }
+  validates :title, presence: true, length: { maximum: 20 }
+  validates :body, presence: true, length: { maximum: 300 }
 
   def get_image(width, height)
     unless image.attached?
