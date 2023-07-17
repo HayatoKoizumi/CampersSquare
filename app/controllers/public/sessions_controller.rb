@@ -19,10 +19,12 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   # end
   def after_sign_in_path_for(resource)
+    flash[:notice] = "ようこそ「#{@user.user_name}」さん"
     user_path(current_user)
   end
 
   def after_sign_out_path_for(resource)
+    flash[:notice] = "ログアウトしました。"
     root_path
   end
 
@@ -47,7 +49,7 @@ class Public::SessionsController < Devise::SessionsController
       flash[:notice] = "退会済みです。再度ご登録してご利用ください。"
       redirect_to new_user_registration_path
     else
-      flash[:notice] = "項目を入力してください"
+      flash[:notice] = "該当するユーザーが見つかりません。再度、項目を入力してください。"
     end
   end
   # If you have extra params to permit, append them to the sanitizer.

@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        last_name: 名前（姓）
+        first_name: 名前（名）
+        user_name: ユーザーネーム
+      post_camp:
+        title: タイトル
+        body: 本文
+        image: 画像
