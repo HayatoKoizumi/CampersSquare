@@ -38,7 +38,7 @@
           <span><%= render "public/relationships/follow_btn", user: @user %> ｜ </span>
           <span><i class="fa fa-calendar"></i> <%= @post_camp.created_at.strftime('%Y/%m/%d') %> ｜ </span>
           <span><i class="fa fa-comment"></i> <%= link_to "#{@post_camp.comments.count}", post_camp_path(@post_camp.id), class:"text-dark" %> ｜ </span>
-          <span><%= render "public/favorites/favorite", post_camp: @post_camp %></span>
+          <span id="favorite_buttons_<%= @book.id %>" ><%= render "public/favorites/favorite", post_camp: @post_camp %></span>
           <% if @post_camp.user == current_user %>
             <span> ｜ </span><%= link_to "編集", edit_post_camp_path(@post_camp), class:"text-dark" %>
             <span> ｜ </span><%= link_to "削除", post_camp_path(@post_camp), class:"text-dark", method: :delete, data: { confirm: "本当に削除しますか？" } %>
