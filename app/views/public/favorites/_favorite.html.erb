@@ -1,10 +1,10 @@
 <% if post_camp.favorited_by?(current_user) %>
-  <%= link_to post_camp_favorites_path(post_camp), class:"text-dark", method: :delete, remote: true, data: {"turbolinks" => false} do %>
+  <%= link_to post_camp_favorites_path(post_camp), class:"text-dark", method: :delete, remote: true do %>
     <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
     <%= post_camp.favorites.count %> いいね
   <% end %>
 <% else %>
-  <%= link_to post_camp_favorites_path(post_camp), class:"text-dark", method: :post, remote: true, data: {"turbolinks" => false} do %>
+  <%= link_to post_camp_favorites_path(post_camp), class:"text-dark", method: :post, remote: true do %>
     <i class="fas fa-heart" aria-hidden="true"></i>
     <%= post_camp.favorites.count %> いいね
   <% end %>
